@@ -1,8 +1,16 @@
+CXX = g++
 CFLAGS = -std=c++17 -O2
 LDFLAGS = -lglfw -lvulkan -ldl -lpthread -lX11 -lXxf86vm -lXrandr -lXi
 
-VulkanTest: main.cpp
-	g++ $(CFLAGS) -o VulkanTest main.cpp $(LDFLAGS)
+SRC = main.cpp fun.cpp 
+OBJ = $(SRC:.cpp=.o)
+
+TARGET = VulkanTest
+
+all: $(TARGET)
+
+$(TARGET): $(OBJ)
+	$(CXX) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 .PHONY: test clean
 
@@ -10,4 +18,4 @@ test: VulkanTest
 	./VulkanTest
 
 clean:
-	rm -f VulkanTest
+	rm -vf $(OBJ) $(TARGET)
