@@ -29,11 +29,10 @@ void HelloTriangleApplication::createInstance() {
   createInfo.ppEnabledExtensionNames = glfwExtensions;
   if(enableValidationLayers){
     createInfo.enabledLayerCount = static_cast<uint32_t>(validationLayers.size());
-    createInfo.ppEnabledLayerNames = 0;
+    createInfo.ppEnabledLayerNames = validationLayers.data();
   }else{
     createInfo.enabledLayerCount = 0;
   }
-  
   VkResult result = vkCreateInstance(&createInfo, nullptr, &instance);
 
   //Creazione Istanza Vulkan

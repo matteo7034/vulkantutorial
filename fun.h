@@ -23,6 +23,7 @@ private:
   bool checkValidationLayerSupport();
   GLFWwindow *window;
   VkInstance instance;
+  std::vector<const char*> getRequiredExtentions();
 };
 #ifdef NDEBUG
     const bool enableValidationLayers = false;
